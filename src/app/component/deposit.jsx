@@ -3,7 +3,10 @@ import React from "react";
 function Deposit({index, setIndex}) {
 
     function handleButtonsDepositChange(ind) {
-        setIndex(ind)
+        setIndex((prevState) => ({
+            ...prevState,
+            deposit: ind
+        }));
     }
     return(
         <>

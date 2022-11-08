@@ -2,7 +2,10 @@ import React from "react";
 
 function PaymentMethod({index,setIndex}) {
     function handleButtonsPaymentChange(ind) {
-        setIndex(ind)
+        setIndex((prevState) => ({
+                    ...prevState,
+                    payment: ind
+                }));
     }
     return(
         <>

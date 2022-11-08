@@ -7,32 +7,34 @@ import Deposit from "./deposit";
 import CustomerData from "./customerData";
 import DesignButton from "./designButton";
 
-function Rental() {
+function AddRental() {
     const [index,setIndex] = useState(1)
-    const [count, setCount] = useState(1)
-    const [countHour, setCountHour] = useState(0.5)
-    const [countDya, setCountDay] = useState(12)
-    const [indexPayment,setIndexPayment] = useState(0)
-    const [indexDeposit,setIndexDeposit] = useState(0)
+    const [counter, setCounter] = useState({quantity: 1, hour: 0.5, day: 12})
+    const [indexRadio, setIndexRadio] = useState({payment: 0, deposit: 0})
 
     function handleButtonChange(ind) {
         setIndex(ind)
         if(ind === 1){
-            setCount(1)
-            setCountDay(12)
+            setCounter((prevState) => ({
+                ...prevState,
+                quantity: 1,
+                day: 12
+            }));
         } else {
-            setCount(1)
-            setCountHour(0.5)
+            setCounter((prevState) => ({
+                ...prevState,
+                quantity: 1,
+                hour: 0.5
+            }));
         }
     }
 
     function handleButtonRentalChange() {
         setIndex(1)
-        setCount(1)
-        setCountHour(0.5)
-        setCountDay(12)
-        setIndexPayment(0)
-        setIndexDeposit(0)
+        // setCount(1)
+        // setCountHour(0.5)
+        // setCountDay(12)
+        setIndexRadio({payment: 0, deposit: 0})
     }
     return(
         <div className="container">
@@ -42,25 +44,24 @@ function Rental() {
                     onButtonChange={handleButtonChange}
                 />
                 <NumberProduct
-                    count={count}
-                    setCount={setCount}
+                    counter={counter.quantity}
+                    setCounter={setCounter}
                 />
                 <TimeRental
                     index={index}
-                    count={countHour}
-                    countDya={countDya}
-                    setCount={setCountHour}
-                    setCountDay={setCountDay}
+                    countHour={counter.hour}
+                    countDya={counter.day}
+                    setCounter={setCounter}
                 />
                 <PaymentMethod
-                    index={indexPayment}
-                    setIndex={setIndexPayment}
+                    index={indexRadio.payment}
+                    setIndex={setIndexRadio}
                 />
             </div>
             <div className={"container-info__client " + (2 === index? "active" : "")}>
                 <Deposit
-                    index={indexDeposit}
-                    setIndex={setIndexDeposit}
+                    index={indexRadio.deposit}
+                    setIndex={setIndexRadio}
                 />
                 <CustomerData/>
             </div>
@@ -70,4 +71,4 @@ function Rental() {
         </div>
     )
 }
-export default Rental
+export default AddRental

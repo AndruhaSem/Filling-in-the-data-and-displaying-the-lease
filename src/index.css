@@ -1,13 +1,189 @@
+:root {
+  --text-color: #fff;
+  --hover-text: #eb5a1e;
+  --button-color: #03e9f4;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100%;
+}
+html {
+  height: 100%;
+}
+.container {
+  background: linear-gradient(#141e30, #243b55);
+}
+.container_rental h2 {
+  padding: 40px 0 0 0;
+  color: var(--text-color);
+  text-align: center;
+  margin-top: 0;
+}
+.info-position__room, .info-position__street {
+  color: var(--text-color);
+  display: flex;
+}
+.icons {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  margin-top: 2px;
+}
+.position {
+  display: flex;
+  justify-content: center;
+}
+.mr {
+  margin-left: 35px;
+}
+.name-position {
+  margin: 0 0 0 5px;
+}
+h3 {
+  color: var(--text-color);
+  text-align: center;
+  margin-top: 30px;
+}
+.items, .counter-wrapper {
+  font-family: 'Merriweather', serif;
+  background: #f2ede7;
+  border-radius: 8px;
+  width: 120px;
+  display: flex;
+  font-size: 18px;
+  overflow: hidden;
+  text-align: center;
+}
+.info-position__street.active .icons {
+  background: var(--text-color);
+}
+.container-info__client.active {
+  display: block;
+}
+.info-position__room.active .icons {
+  background: var(--text-color);
+}
+.cash-payments.active .icons {
+  background: var(--text-color);
+}
+.no-cash_payments.active .icons {
+  background: var(--text-color);
+}
+.client-deposit.active .icons {
+  background: var(--text-color);
+}
+.client-deposit_cash.active .icons {
+  background: var(--text-color);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.items__control {
+  width: 40px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+  line-height: 1.5;
+  height: 30px;
 }
+.items__current {
+  width: 40px;
+  line-height: 1.5;
+  height: 30px;
+}
+.items__control:hover {
+  background: var(--hover-text);
+  color: var(--text-color);
+}
+.details-wrapper_quantity, .details-wrapper_time {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.cash-payments, .pledge-button, .no-cash_payments {
+  display: flex;
+}
+.container-info__client {
+  display: none;
+}
+.cash,.deposit {
+  margin: 0 0 0 5px;
+  color: var(--text-color);
+}
+.payment-method, .info-client {
+  margin: 20px auto;
+  display: table;
+}
+.mr-b {
+  margin-bottom: 15px;
+}
+.container-info_clients {
+  margin-top: 50px;
+}
+.user-box {
+  position: relative;
+}
+.user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: var(--text-color);
+  border: none;
+  border-bottom: 1px solid var(--text-color);
+  outline: none;
+  background: transparent;
+}
+.user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--text-color);
+  pointer-events: none;
+  transition: .5s;
+}
+.user-box input:focus ~ label,
+.user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color:  var(--button-color);
+  font-size: 12px;
+}
+.form-client{
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 25px;
+}
+.create_button {
+  margin-top: 40px;
+  text-align: center;
+}
+.create-button__arrange {
+  padding: 10px 20px;
+  color: var(--button-color);
+  font-size: 16px;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  letter-spacing: 4px;
+  background: linear-gradient(#141e30, #243b55);
+  border: 1px solid var(--button-color);
+  margin-bottom: 50px;
+}
+.user-box input::-webkit-outer-spin-button,
+.user-box input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.create-button__arrange:hover {
+  background: var(--button-color);
+  color: var(--text-color);
+  box-shadow: 0 0 5px var(--button-color),
+  0 0 25px var(--button-color),
+  0 0 50px var(--button-color),
+  0 0 100px var(--button-color);
+}
+
+
