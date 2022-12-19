@@ -1,41 +1,47 @@
 import React from "react";
 
-// function ChoosingRental({ index, onButtonChange }) {
+// function RadioFildDeposit({ index, setIndex }) {
+//   function handleButtonsDepositChange(ind) {
+//     setIndex((prevState) => ({
+//       ...prevState,
+//       deposit: ind,
+//     }));
+//   }
 //   return (
 //     <>
-//       <div className="position">
+//       <h3>Залог</h3>
+//       <div className="info-client">
 //         <div
 //           className={
-//             "info-position__street btn-position " +
-//             (1 === index ? "active" : "")
+//             "client-deposit pledge-button mr-b " + (1 === index ? "active" : "")
 //           }
-//           onClick={() => onButtonChange(1)}
+//           onClick={() => handleButtonsDepositChange(1)}
 //         >
 //           <div className="icons"> </div>
-//           <p className="name-position">Пляж</p>
+//           <p className="deposit">Документы</p>
 //         </div>
 //         <div
 //           className={
-//             "info-position__room mr btn-position " +
-//             (2 === index ? "active" : "")
+//             "client-deposit_cash pledge-button " + (2 === index ? "active" : "")
 //           }
-//           onClick={() => onButtonChange(2)}
+//           onClick={() => handleButtonsDepositChange(2)}
 //         >
 //           <div className="icons"> </div>
-//           <p className="name-position">Помещение</p>
+//           <p className="deposit">Наличка</p>
 //         </div>
 //       </div>
 //     </>
 //   );
 // }
-// export default ChoosingRental;
+// export default RadioFildDeposit;
 
-const RadioFild = ({ options, name, value, onChange }) => {
+const RadioFild = ({ options, name, onChange, label }) => {
   function handleChange({ target }) {
     onChange({ name: target.name, value: target.value });
   }
   return (
     <div className="rental-choice">
+      <label className="label">{label}</label>
       <div className="form-container">
         {options.map((option) => (
           <div key={option.name + "_" + option.value} className="form-check">
@@ -44,10 +50,8 @@ const RadioFild = ({ options, name, value, onChange }) => {
               type="radio"
               name={name}
               id={option.name + "_" + option.value}
-              checked={option.value === value}
               value={option.value}
               onChange={handleChange}
-              onClick={option.func}
             />
             <label
               className="form-check-label"

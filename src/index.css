@@ -7,13 +7,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  height: 100%;
 }
-html {
-  height: 100%;
-}
+
 .container {
   background: linear-gradient(#141e30, #243b55);
+  height: 115vh;
 }
 .container_rental h2 {
   padding: 40px 0 0 0;
@@ -21,34 +19,45 @@ html {
   text-align: center;
   margin-top: 0;
 }
-.info-position__room, .info-position__street {
-  color: var(--text-color);
-  display: flex;
+.form-check-input {
+  appearance: none;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: #fff;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin-right: 5px;
 }
-.icons {
-  width: 10px;
-  height: 10px;
-  border: 1px solid var(--text-color);
-  border-radius: 10px;
-  margin-top: 2px;
+.form-check {
+  margin-right: 15px;
 }
-.position {
+.form-container {
   display: flex;
   justify-content: center;
+  margin-left: 30px;
 }
-.mr {
-  margin-left: 35px;
+.form-check-input:checked {
+  background-color: #eb5a1e;
+  border-color: #eb5a1e;
 }
-.name-position {
-  margin: 0 0 0 5px;
+
+.rental-choice {
+  color: #fff;
+  margin-top: 40px;
+  margin-bottom: 35px;
 }
-h3 {
-  color: var(--text-color);
-  text-align: center;
-  margin-top: 30px;
+/* .form-check-label {
+  
+} */
+.label {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 25px;
 }
-.items, .counter-wrapper {
-  font-family: 'Merriweather', serif;
+.items,
+.counter-wrapper {
+  font-family: "Merriweather", serif;
   background: #f2ede7;
   border-radius: 8px;
   width: 120px;
@@ -78,112 +87,118 @@ h3 {
 .client-deposit_cash.active .icons {
   background: var(--text-color);
 }
-
-.items__control {
+h3 {
+  text-align: center;
+  color: #fff;
+}
+.items__control,
+.items__controll {
   width: 40px;
   cursor: pointer;
   transition: 0.2s ease-in;
   line-height: 1.5;
   height: 30px;
 }
+
 .items__current {
   width: 40px;
   line-height: 1.5;
   height: 30px;
 }
-.items__control:hover {
+.items__control:hover,
+.items__controll:hover {
   background: var(--hover-text);
   color: var(--text-color);
 }
-.details-wrapper_quantity, .details-wrapper_time {
+.details-wrapper_quantity,
+.details-wrapper_time {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
-.cash-payments, .pledge-button, .no-cash_payments {
-  display: flex;
-}
+
 .container-info__client {
   display: none;
-}
-.cash,.deposit {
-  margin: 0 0 0 5px;
-  color: var(--text-color);
-}
-.payment-method, .info-client {
-  margin: 20px auto;
-  display: table;
-}
-.mr-b {
-  margin-bottom: 15px;
-}
-.container-info_clients {
   margin-top: 50px;
 }
-.user-box {
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + 0.75rem);
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+.form-control {
   position: relative;
+  display: block;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  width: 40%;
+  border-radius: 0.375rem;
+  margin-top: 4px;
 }
-.user-box input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  margin-bottom: 30px;
-  color: var(--text-color);
-  border: none;
-  border-bottom: 1px solid var(--text-color);
-  outline: none;
-  background: transparent;
+.mb-4 label,
+.label {
+  color: #fff;
 }
-.user-box label {
-  position: absolute;
-  top:0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: var(--text-color);
-  pointer-events: none;
-  transition: .5s;
-}
-.user-box input:focus ~ label,
-.user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color:  var(--button-color);
-  font-size: 12px;
-}
-.form-client{
-  padding-left: 50px;
-  padding-right: 50px;
-  margin-top: 25px;
-}
-.create_button {
+.label {
+  margin-bottom: 35px;
   margin-top: 40px;
-  text-align: center;
+}
+.width {
+  margin-left: 37%;
+}
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+.invalid-feedback {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #dc3545;
+}
+.form-control.is-invalid:focus {
+  border-color: #ff0018;
+  box-shadow: 0 0 0 0.25rem rgb(220 53 69 / 25%);
+}
+.form-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #03e9f4;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(3 233 244 / 25%);
+}
+.user-box {
+  width: 100%;
 }
 .create-button__arrange {
-  padding: 10px 20px;
-  color: var(--button-color);
-  font-size: 16px;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .5s;
-  letter-spacing: 4px;
-  background: linear-gradient(#141e30, #243b55);
-  border: 1px solid var(--button-color);
-  margin-bottom: 50px;
+  margin-bottom: 109px;
+  width: 14%;
+  background: #eb5a1e;
+  border: 1px solid #eb5a1e;
+  border-radius: 5px;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 25px;
 }
+
+.create-button__arrange:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.create_button {
+  display: flex;
+  justify-content: center;
+}
+
 .user-box input::-webkit-outer-spin-button,
 .user-box input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-
-.create-button__arrange:hover {
-  background: var(--button-color);
-  color: var(--text-color);
-  box-shadow: 0 0 5px var(--button-color),
-  0 0 25px var(--button-color),
-  0 0 50px var(--button-color),
-  0 0 100px var(--button-color);
-}
-
-
