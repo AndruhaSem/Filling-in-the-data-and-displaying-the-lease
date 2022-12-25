@@ -1,38 +1,56 @@
 import React from "react";
-import GroupList from "./groupList";
 import UserTable from "./userTable";
 import Pagination from "./pagination";
-import {useState} from "react";
+import { paginate } from "./paginate";
+import { useState } from "react";
 import api from "../api";
-import _ from "lodash"
+import _ from "lodash";
+import { useEffect } from "react";
 
-function Statistics () {
-    const [statistic] = useState(api.statistic.fetchAll())
-    const [sortBy, setSortBy] = useState({ path: "id", order: "asc" });
-    function handleSort(item) {
-        setSortBy(item);
-    }
-    const sortedUsers = _.orderBy(
-        statistic,
-        [sortBy.path],
-        [sortBy.order]
-    );
+function Statistics() {
+  const [statistic, setStatistic] = useState();
+  const [currentPage, setCurrenPage] = useState(1);
+  const pageSize = 12;
+  const [sortBy, setSortBy] = useState({ path: "id", order: "asc" });
+  function handleSort(item) {
+    setSortBy(item);
+  }
+  const handlePageChange = (pageIndex) => {
+    setCurrenPage(pageIndex);
+  };
+  useEffect(() => {
+    api.statistic.fetchAll().then((data) => setStatistic(data));
+  }, []);
+
+  function handleDelete(userId) {
+    setStatistic(statistic.filter((user) => user.id !== userId));
+  }
+  if (statistic) {
+    const count = statistic.length;
+    const sortedUsers = _.orderBy(statistic, [sortBy.path], [sortBy.order]);
+    const userCrop = paginate(sortedUsers, currentPage, pageSize);
+
     return (
-        <div className="information-container">
-            <div className="button-block_menu">
-                <GroupList/>
-            </div>
-            <div className="block-information">
-                <div className="block-information">
-                   <UserTable
-                       statistic={sortedUsers}
-                       onSort={handleSort}
-                       selectedSort={sortBy}
-                   />
-                </div>
-                <Pagination/>
-            </div>
+      <div className="block-information">
+        <div className="block-information">
+          {count > 0 && (
+            <UserTable
+              statistic={userCrop}
+              onSort={handleSort}
+              selectedSort={sortBy}
+              onDelete={handleDelete}
+            />
+          )}
         </div>
-    )
+        <Pagination
+          itemCount={count}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </div>
+    );
+  }
+  return <h2>Loading....</h2>;
 }
-export default Statistics
+export default Statistics;

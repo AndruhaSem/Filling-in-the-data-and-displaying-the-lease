@@ -1,11 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function GroupList() {
-    return (
-        <ul>
-            <li className="button-menu">Статистика</li>
-            <li className="button-menu">Бухгалтерия</li>
-        </ul>
-    )
+  return (
+    <div className="button-block_menu">
+      <ul>
+        <li className="button-menu">
+          <Link className="button-link" to="/statistic">
+            Статистика
+          </Link>
+        </li>
+        <li className="button-menu">
+          <Link className="button-link" to="/statistic/bookkeeping">
+            Бухгалтерия
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
 }
-export default GroupList
+export default GroupList;

@@ -1,6 +1,6 @@
-import * as statistic from "./fake.api/statistic";
+import statistic from "./fake.api/statistic";
 
 const API = {
-    statistic
-}
-export default API
+  statistic,
+};
+export default API;
