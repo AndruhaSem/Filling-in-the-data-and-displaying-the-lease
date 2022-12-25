@@ -1,5 +1,6 @@
 import React from "react";
 import Table from "./table";
+import { displayDate } from "./displayDate";
 
 function UserTable({ statistic, onSort, selectedSort, onDelete }) {
   const columns = {
@@ -37,11 +38,16 @@ function UserTable({ statistic, onSort, selectedSort, onDelete }) {
     },
     date: {
       name: "Начало аренды",
-      component: (user) => user.date,
+      component: (user) => {
+        const date = new Date(user.date);
+        return `${date.getDate()}.${
+          date.getMonth() + 1
+        }.${date.getFullYear()}/${date.getHours()}:${date.getMinutes()}`;
+      },
     },
     newData: {
-      name: "Прошедшие время",
-      component: (user) => user.date,
+      name: "Время окончание",
+      component: (user) => displayDate(user.date, user.timeRental),
     },
     status: {
       component: (user) => (

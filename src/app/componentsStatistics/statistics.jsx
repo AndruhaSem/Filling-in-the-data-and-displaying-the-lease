@@ -21,7 +21,7 @@ function Statistics() {
   useEffect(() => {
     api.statistic.fetchAll().then((data) => setStatistic(data));
   }, []);
-
+  console.log(Date.now() + 2 * 60 * 1000);
   function handleDelete(userId) {
     setStatistic(statistic.filter((user) => user.id !== userId));
   }
@@ -42,12 +42,14 @@ function Statistics() {
             />
           )}
         </div>
-        <Pagination
-          itemCount={count}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
+        <div className="flex-pagination">
+          <Pagination
+            itemCount={count}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        </div>
       </div>
     );
   }
